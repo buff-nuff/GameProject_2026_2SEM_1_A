@@ -24,7 +24,7 @@ public class PlayerPickup : MonoBehaviour
 
     private PickupItem FindClosestItem()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, -0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, ~0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
         PickupItem closestItem = null;
         float closestDistance = Mathf.Infinity;
 
@@ -48,7 +48,7 @@ public class PlayerPickup : MonoBehaviour
 
     private Door FindClosestDoor()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, -0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, ~0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
         Door closestDoor = null;
         float closestDistance = Mathf.Infinity;
 
@@ -72,7 +72,7 @@ public class PlayerPickup : MonoBehaviour
 
     private NPC FindClosestNPC()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, -0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
+        Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius, ~0, QueryTriggerInteraction.Collide); //구체의 충돌체를 만든다.
         NPC closestNPC = null;
         float closestDistance = Mathf.Infinity;
 
@@ -148,12 +148,6 @@ public class PlayerPickup : MonoBehaviour
     void Update()
     {
         if (isPickingUp) return;
-
-        //Player 주변에서 가장 가까운 아이템을 찾는다.
-        targetItem = FindClosestItem();
-
-        if (targetItem == null) return;
-
 
         targetItem = FindClosestItem();
         targetDoor = FindClosestDoor();
